@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fx:id="scrollpane" onMouseClicked="#enable_Ajout" prefHeight="800.0" prefWidth="1026.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pij.controller.RefugejController">
+   <content>
+      <AnchorPane id="AnchorPane" prefHeight="617.0" prefWidth="1023.0">
+         <children>
+            <TableView fx:id="table_R" layoutX="251.0" layoutY="30.0" onMouseClicked="#get_data" prefHeight="316.0" prefWidth="707.0" style="-fx-border-color: black;" stylesheets="@../css/table.css">
+              <columns>
+                <TableColumn fx:id="nom" prefWidth="84.0" text="Nom" />
+                <TableColumn fx:id="prenom" prefWidth="106.0" text="Prenom" />
+                  <TableColumn fx:id="nationality" prefWidth="103.0" text="Nationalité" />
+                  <TableColumn fx:id="birthLoc" prefWidth="203.0" text="Date et lieu de naissance" />
+                  <TableColumn fx:id="socialSit" minWidth="0.0" prefWidth="132.0" text="situation sociale" />
+                  <TableColumn fx:id="camp" prefWidth="75.0" text="camp" />
+              </columns>
+            </TableView>
+            <JFXTextField fx:id="nom_txt" layoutX="201.0" layoutY="394.0" promptText="Nom" />
+            <JFXTextField fx:id="prenom_txt" layoutX="201.0" layoutY="436.0" promptText="Prenom" />
+            <JFXTextField fx:id="nationality_txt" layoutX="478.0" layoutY="394.0" promptText="Nationalié" />
+            <JFXTextField fx:id="birthLoc_txt" layoutX="478.0" layoutY="550.0" promptText="Lieu de naissance" />
+            <JFXDatePicker fx:id="birthD_txt" layoutX="201.0" layoutY="550.0" promptText="Date de naissance" />
+            <Label layoutX="435.0" layoutY="555.0" text="à">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="sexe_txt" layoutX="201.0" layoutY="497.0" prefHeight="31.0" prefWidth="169.0" promptText="Gender" />
+            <JFXComboBox fx:id="social_txt" layoutX="478.0" layoutY="445.0" prefHeight="31.0" prefWidth="169.0" promptText="Situation Sociale" />
+            <JFXButton fx:id="ajouter_R1" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="10.0" layoutX="28.0" layoutY="493.0" onAction="#ajouter_R" onMouseEntered="#enter_btn" onMouseExited="#exit_btn" prefHeight="43.0" prefWidth="143.0" ripplerFill="#a3a2a7" style="-fx-border-color: gray;" text="Ajouter" textFill="#5b5858">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/plus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+               <effect>
+                  <Glow />
+               </effect>
+            </JFXButton>
+            <JFXButton fx:id="modifier_R" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="10.0" layoutX="28.0" layoutY="437.0" onAction="#modifier_R" prefHeight="43.0" prefWidth="143.0" ripplerFill="#a3a2a7" style="-fx-border-color: black;" text="Modifier" textFill="#5b5858">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/edit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="supprimer_R" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="10.0" layoutX="28.0" layoutY="385.0" onAction="#supprimer_R" prefHeight="43.0" prefWidth="143.0" ripplerFill="#a3a2a7" style="-fx-border-color: black;" text="Supprimer" textAlignment="CENTER" textFill="#5b5858">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </JFXButton>
+            <JFXComboBox fx:id="camp_txt" layoutX="475.0" layoutY="497.0" prefHeight="31.0" prefWidth="178.0" />
+            <JFXButton fx:id="upload_img" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="10.0" layoutX="686.0" layoutY="467.0" onAction="#upload_img" prefHeight="43.0" prefWidth="168.0" ripplerFill="#a3a2a7" style="-fx-border-color: black;" text="Upload Img" textAlignment="CENTER" textFill="#5b5858">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/photo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </JFXButton>
+            <ImageView fx:id="imgView" fitHeight="148.0" fitWidth="110.0" layoutX="873.0" layoutY="414.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="R_img" fitHeight="232.0" fitWidth="159.0" layoutX="39.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" />
+            <JFXTextField fx:id="path_txt" disable="true" layoutX="686.0" layoutY="528.0" />
+            <JFXButton fx:id="scroll_down_btn" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="10.0" layoutX="66.0" layoutY="287.0" onAction="#scroll_down" prefHeight="43.0" prefWidth="105.0" ripplerFill="#a3a2a7" style="-fx-border-color: black;" text="Down" textAlignment="CENTER" textFill="#5b5858">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/down-arrow.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="scroll_up_btn" alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="10.0" layoutX="47.0" layoutY="560.0" onAction="#scroll_up" prefHeight="43.0" prefWidth="105.0" ripplerFill="#a3a2a7" style="-fx-border-color: black;" text="Up" textAlignment="CENTER" textFill="#5b5858">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/up-arrow.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

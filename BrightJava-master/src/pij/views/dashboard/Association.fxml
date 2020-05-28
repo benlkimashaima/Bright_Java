@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="838.0" style="-fx-background-color: #e9eea5;" stylesheets="@../css/login1.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pij.controller.AssociationController">
+   <children>
+      <TableView fx:id="table" layoutX="322.0" layoutY="167.0" prefHeight="191.0" prefWidth="481.0" style="-fx-background-color: #91a771;">
+        <columns>
+          <TableColumn fx:id="colusername" prefWidth="141.0" text="Nom" />
+            <TableColumn fx:id="coldomain" prefWidth="180.0" text="Domaine" />
+            <TableColumn fx:id="colemail" prefWidth="173.0" text="Email" />
+        </columns>
+      </TableView>
+      <Button fx:id="Supprimer" layoutX="442.0" layoutY="407.0" mnemonicParsing="false" onAction="#Supprimer" prefHeight="39.0" prefWidth="171.0" text="Delete" textFill="#ff0b0b">
+         <font>
+            <Font name="Bell MT Bold" size="19.0" />
+         </font></Button>
+      <Button fx:id="Ajouter" layoutX="114.0" layoutY="420.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="25.0" prefWidth="126.0" text="Add" textFill="#03a16a">
+         <font>
+            <Font name="Bell MT Bold" size="20.0" />
+         </font></Button>
+      <TextField fx:id="txt_username" layoutX="133.0" layoutY="187.0" promptText="Nom....!" />
+      <TextField fx:id="txt_domaine" layoutX="133.0" layoutY="226.0" promptText="Domaines.....!" />
+      <TextField fx:id="txt_email" layoutX="133.0" layoutY="269.0" promptText="Email...!" />
+      <TextField fx:id="txt_password" layoutX="133.0" layoutY="320.0" promptText="Password...!" />
+      <ImageView fitHeight="25.0" fitWidth="40.0" layoutX="464.0" layoutY="414.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/trash.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="121.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/more.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="74.0" layoutY="189.0" text="Nom:" textFill="#4c0bff">
+         <font>
+            <Font name="Bell MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="45.0" layoutY="228.0" text="Domaines:" textFill="#4f04ff">
+         <font>
+            <Font name="Bell MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="66.0" layoutY="271.0" text="E-mail:" textFill="#4f0ae4">
+         <font>
+            <Font name="Bell MT Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="47.0" layoutY="322.0" text="Password:" textFill="#2d04ff">
+         <font>
+            <Font name="Bell MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="266.0" layoutY="32.0" prefHeight="47.0" prefWidth="275.0" text="Listes des Associations" textFill="#e186df">
+         <font>
+            <Font name="Bell MT Bold" size="26.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

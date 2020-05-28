@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pij.controller.HomeController">
+    <stylesheets>
+        <URL value="@/pij/views/css/home.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane layoutX="-11.0" layoutY="-46.0" prefHeight="670.0" prefWidth="956.0" style="-fx-background-color: #edf2f2;">
+         <children>
+            <Pane layoutX="29.0" layoutY="24.0" prefHeight="138.0" prefWidth="643.0" AnchorPane.bottomAnchor="461.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="309.0" layoutY="68.0" prefHeight="49.0" prefWidth="313.0" text="Listes des Membres " textFill="#86bce0">
+                     <font>
+                        <Font name="Bell MT Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <TableView fx:id="table" layoutX="88.0" layoutY="157.0" prefHeight="226.0" prefWidth="602.0" style="-fx-background-color: #86bce0;">
+              <columns>
+                <TableColumn fx:id="colnom" prefWidth="85.66665649414062" text="Nom " />
+                  <TableColumn fx:id="colprenom" prefWidth="121.33334350585938" text="Prénom" />
+                  <TableColumn fx:id="colville" minWidth="0.0" prefWidth="102.0" text="Ville" />
+                  <TableColumn fx:id="colemail" prefWidth="147.33331298828125" text="Email" />
+                  <TableColumn fx:id="coltel" minWidth="0.0" prefWidth="149.0" text="Tel" />
+              </columns>
+            </TableView>
+            <JFXButton fx:id="Ajouter" layoutX="469.0" layoutY="450.0" onAction="#Ajouter" prefHeight="35.0" prefWidth="170.0" ripplerFill="#c3bdbd" style="-fx-background-color: #1D2026;" text="Ajouter un membre" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="Modifier" layoutX="469.0" layoutY="505.0" onAction="#Modifier" prefHeight="35.0" prefWidth="170.0" ripplerFill="#c3bdbd" style="-fx-background-color: #1D2026;" text="Modifier un membre" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="Supprimer" layoutX="469.0" layoutY="558.0" onAction="#Supprimer" prefHeight="35.0" prefWidth="170.0" ripplerFill="#c3bdbd" style="-fx-background-color: #1D2026;" text="Supprimer un membre" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXTextField fx:id="txt_prenom" layoutX="27.0" layoutY="484.0" prefHeight="25.0" prefWidth="140.0" promptText="prenom" />
+            <JFXTextField fx:id="txt_nom" layoutX="25.0" layoutY="438.0" prefHeight="25.0" prefWidth="143.0" promptText="nom" />
+            <JFXTextField fx:id="txt_tel" layoutX="190.0" layoutY="497.0" prefHeight="25.0" prefWidth="160.0" promptText="tel" />
+            <JFXTextField fx:id="txt_ville" layoutX="26.0" layoutY="533.0" prefHeight="25.0" prefWidth="142.0" promptText="ville" />
+            <JFXTextField fx:id="txt_email" layoutX="196.0" layoutY="451.0" prefHeight="25.0" prefWidth="161.0" promptText="email" />
+            <ImageView fitHeight="25.0" fitWidth="19.0" layoutX="436.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/down-arrow.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="436.0" layoutY="513.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/edit.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="29.0" layoutX="433.0" layoutY="563.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/trash.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
