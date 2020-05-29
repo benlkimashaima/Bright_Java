@@ -30,8 +30,8 @@ public class PiJ extends Application {
        MyConnection c = MyConnection.getInstance() ; 
 
       //Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("views/login.fxml"));
-       //FXMLLoader loader = new FXMLLoader(getClass().getResource("views/Login1.fxml"));
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/pij/views/Dashboard.fxml"));
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("views/Login1.fxml"));
+  //  FXMLLoader loader = new FXMLLoader(getClass().getResource("/pij/views/FrontStock.fxml"));
        Parent root = loader.load();
         Scene scene = new Scene(root);
        

@@ -69,15 +69,6 @@ public class don_crud {
 
     
     
-    public ObservableList<don> afficher(don A) throws SQLException {
-        ObservableList<don> arr = FXCollections.observableArrayList();
-        st = cn2.createStatement();
-        ResultSet rs = st.executeQuery("select * from don ");
-        while (rs.next()) {
-            arr.add(new don(rs.getInt("reference"),rs.getString("libelle"), rs.getInt("quantite"), rs.getDate("date"), rs.getInt("Stock_id")));
-        }
-        return arr;
-    }
     
     
     

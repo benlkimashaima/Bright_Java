@@ -26,6 +26,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -89,11 +90,31 @@ public class DonController implements Initializable {
     public ObservableList<don> tables = FXCollections.observableArrayList();
     private don ev=null;
     stock s =new stock();
+              //List<String> type;
+
     @FXML 
     private TextField search;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      
+        Connection cn2= MyConnection.getInstance().getCnx();
+        ObservableList<String> availableChoices = FXCollections.observableArrayList("Selectionner stock");
+        stock_crud a=new stock_crud();
+        String req = "SELECT * FROM stock";
+        try {
+            Statement pst = cn2.createStatement();
+            ResultSet rs = pst.executeQuery(req);
+            while (rs.next()) {
+                s.setId(rs.getInt("id"));
+                s.setType(rs.getString("type"));
+                availableChoices.add(s.getType());
+                Cstock.setItems(availableChoices);
+                Cstock.getSelectionModel().selectFirst();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DonController.class.getName()).log(Level.SEVERE, null, ex);
+        }                   
+
+     
     } 
     
     
@@ -142,10 +163,9 @@ public class DonController implements Initializable {
          e.printStackTrace();
      }
     }
-    
-    
-   
-    @FXML
+
+     
+     @FXML
     private void ajouter(ActionEvent event) throws SQLException {
      labelnom.setText("");
      labesquanite.setText("");
@@ -155,14 +175,14 @@ public class DonController implements Initializable {
      SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
      System.out.println(formater.format(new java.util.Date()));
      String aujourdhui=formater.format(new java.util.Date());
- if(tlibelle.getText().isEmpty()||dated.getValue().equals(LocalDate.now())||tquantite.getText().isEmpty()||Cstock.getSelectionModel().getSelectedItem().equals("Selectionner stock")){
+ if(tlibelle.getText().isEmpty()||dated.getValue() == null||tquantite.getText().isEmpty()||Cstock.getSelectionModel().getSelectedItem().equals("Selectionner stock")){
          if (tlibelle.getText().isEmpty()) {
           labelnom.setText("Libelle Vide");
         }
          if (tquantite.getText().isEmpty()) {
           labesquanite.setText("Qantité Vide");
         }
-         if (dated.getValue().equals(LocalDate.now())) {
+         if (dated.getValue() == null) {
         labeldate.setText("Date Vide");
         } 
          if (Cstock.getSelectionModel().getSelectedItem().equals("Selectionner stock")) {
@@ -170,8 +190,9 @@ public class DonController implements Initializable {
         } 
         }else { 
         int nb_place= Integer.parseInt(tquantite.getText());
-        if(nb_place<0 || dated.getValue().toString().compareTo(aujourdhui)>0 ){ 
-            if (nb_place>0) {
+        if(nb_place<0 || dated.getValue().toString().compareTo(aujourdhui)>0   ){
+             
+            if (nb_place<0) {
             labesquanite.setText("quantite doit etre > 0 ");}
             if (dated.getValue().toString().compareTo(aujourdhui)>0) {
             labeldate.setText("Date doit etre < a celle d'aujourdhui  ");}
@@ -194,7 +215,6 @@ public class DonController implements Initializable {
  }
     }
      
-    
     
     @FXML
     private void SelectItemes(MouseEvent event) {
@@ -226,8 +246,7 @@ public class DonController implements Initializable {
                 s.setId(rs.getInt("id"));
                 s.setType(rs.getString("type"));
                 availableChoices.add(s.getType());
-                Cstock.setItems(availableChoices);
-                Cstock.getSelectionModel().selectFirst();
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(DonController.class.getName()).log(Level.SEVERE, null, ex);
@@ -239,10 +258,32 @@ public class DonController implements Initializable {
     @FXML
     private void modifier(ActionEvent event) throws SQLException {
          labelu.setText("");
-        if(tlibelle.getText().isEmpty()||tquantite.getText().isEmpty()||Cstock.getSelectionModel().getSelectedItem().equals("Selectionner matiere")){
-            labelu.setText("aucun Don n'est sélectionné  ");
-        }else {
-            
+         System.out.println("date d'aujourdhui"+new java.util.Date());
+     SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
+     System.out.println(formater.format(new java.util.Date()));
+     String aujourdhui=formater.format(new java.util.Date());
+       if(tlibelle.getText().isEmpty()||dated.getValue() == null||tquantite.getText().isEmpty()||Cstock.getSelectionModel().getSelectedItem().equals("Selectionner stock")){
+         if (tlibelle.getText().isEmpty()) {
+          labelnom.setText("Libelle Vide");
+        }
+         if (tquantite.getText().isEmpty()) {
+          labesquanite.setText("Qantité Vide");
+        }
+         if (dated.getValue() == null) {
+        labeldate.setText("Date Vide");
+        } 
+         if (Cstock.getSelectionModel().getSelectedItem().equals("Selectionner stock")) {
+           labelstock.setText("Stock Vide");
+        } 
+        }else { 
+        int nb_place= Integer.parseInt(tquantite.getText());
+        if(nb_place<0 || dated.getValue().toString().compareTo(aujourdhui)>0   ){
+             
+            if (nb_place<0) {
+            labesquanite.setText("quantite doit etre > 0 ");}
+            if (dated.getValue().toString().compareTo(aujourdhui)>0) {
+            labeldate.setText("Date doit etre < a celle d'aujourdhui  ");}
+       } else {
                 don A = new don();
                 A.setLibelle(tlibelle.getText());
                 A.setQuantite(Integer.parseInt(tquantite.getText()));
@@ -271,7 +312,7 @@ public class DonController implements Initializable {
  }
         
     }
-
+    }
     
     
     @FXML
@@ -298,30 +339,52 @@ public class DonController implements Initializable {
     
     @FXML
     private void afficher(ActionEvent event) {
+
+     don_crud sp = new don_crud();
+      List events=sp.displayALLDon();
+       ObservableList et=FXCollections.observableArrayList(events);
+       table.setItems(et);
+       
         col_libelle.setCellValueFactory(new PropertyValueFactory<>("libelle"));
         col_quantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
         col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
-        col_stock.setCellValueFactory(new PropertyValueFactory<>("Stock_id"));
-        try {
-            don_crud act = new don_crud();
-            don An = new don();
-            tables = act.afficher(An);
-        } catch (SQLException ex) {
-       }
-        table.setItems((ObservableList<don>) tables);
+        col_stock.setCellValueFactory(new PropertyValueFactory<>("sto"));
+
     }
     
     
     public void vider (){
        tlibelle.clear();
        tquantite.clear();
+         Connection cn2= MyConnection.getInstance().getCnx();
+        ObservableList<String> availableChoices = FXCollections.observableArrayList("Selectionner stock");
+        stock_crud a=new stock_crud();
+        String req = "SELECT * FROM stock";
+        try {
+            Statement pst = cn2.createStatement();
+            ResultSet rs = pst.executeQuery(req);
+            while (rs.next()) {
+                s.setId(rs.getInt("id"));
+                s.setType(rs.getString("type"));
+                availableChoices.add(s.getType());
+                Cstock.setItems(availableChoices);
+                Cstock.getSelectionModel().selectFirst();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DonController.class.getName()).log(Level.SEVERE, null, ex);
+        }       
     }
      
      
     @FXML
     private void recherche(KeyEvent event) {
-        table.setItems((ObservableList<don>) tables);
-        FilteredList<don> filteredData = new FilteredList<>(tables, b -> true);
+             don_crud sp = new don_crud();
+
+         List events=sp.displayALLDon();
+       ObservableList et=FXCollections.observableArrayList(events);
+       table.setItems(et);
+        table.setItems((ObservableList<don>) et);
+        FilteredList<don> filteredData = new FilteredList<>(et, b -> true);
         search.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(A -> {
                 if (newValue == null || newValue.isEmpty()) {
@@ -345,6 +408,14 @@ public class DonController implements Initializable {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
   
-  
+   public boolean isAEntier(String x) {
+        try {
+            Integer.parseInt(x);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
+        return true;
+    }
    
 }
