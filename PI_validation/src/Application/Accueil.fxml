@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="729.0" style="-fx-background-color: #E6E4BE;" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="Application.AccueilController">
+    <stylesheets>
+        <URL value="@accueil.css" />
+    </stylesheets>
+   <children>
+      <ImageView fx:id="imgdemande" fitHeight="96.0" fitWidth="96.0" layoutX="464.0" layoutY="168.0" onMouseClicked="#GDemande" pickOnBounds="true">
+         <image>
+            <Image url="@img/Tests-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="imgdon" fitHeight="96.0" fitWidth="96.0" layoutX="186.0" layoutY="168.0" onMouseClicked="#GDon" pickOnBounds="true">
+         <image>
+            <Image url="@img/conversion-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Text layoutX="147.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion Des Dons Monétaires" textAlignment="CENTER" wrappingWidth="174.7548828125">
+         <font>
+            <Font name="Verdana" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="421.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion Des Demandes De Dons" textAlignment="CENTER" wrappingWidth="183.7548828125">
+         <font>
+            <Font name="Verdana" size="18.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="imgutilisateur" fitHeight="96.0" fitWidth="96.0" layoutX="187.0" layoutY="350.0" onMouseClicked="#GUtilisateur" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Groups-Meeting-Dark-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Text layoutX="121.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion Des Utilisateurs" textAlignment="CENTER" wrappingWidth="224.7548828125">
+         <font>
+            <Font name="Verdana" size="18.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="imgdonate" fitHeight="85.0" fitWidth="89.0" layoutX="467.0" layoutY="356.0" onMouseClicked="#GDonate" pickOnBounds="true">
+         <image>
+            <Image url="@img/Election-Donate-Outline-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Text layoutX="400.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Faire Un Don" textAlignment="CENTER" wrappingWidth="224.7548828125">
+         <font>
+            <Font name="Verdana" size="18.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="imgdeconnexion" fitHeight="52.0" fitWidth="41.0" layoutX="661.0" layoutY="8.0" onMouseClicked="#deconnexion" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/Logout-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Text layoutX="649.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="déconnexion">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="50.0" fitWidth="61.0" layoutX="18.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/user-add-icon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Text layoutX="6.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nouveau Utilisateur" textAlignment="CENTER" wrappingWidth="62.693359375">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddba8" height="96.0" layoutX="162.0" layoutY="17.0" stroke="BLACK" strokeType="INSIDE" width="423.0" />
+      <Text fontSmoothingType="LCD" layoutX="174.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin DashBoard">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="39.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="52.0" fitWidth="63.0" layoutX="521.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/dashboard-127-464844.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

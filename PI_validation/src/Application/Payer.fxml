@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="415.0" prefWidth="627.0" style="-fx-background-color: #E6E4BE;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.PayerController">
+    <stylesheets>
+        <URL value="@payer.css" />
+    </stylesheets>
+   <children>
+      <TextField fx:id="num_carte" layoutX="164.0" layoutY="134.0" prefHeight="34.0" prefWidth="423.0" />
+      <TextField fx:id="mois_expiration" layoutX="190.0" layoutY="207.0" prefHeight="34.0" prefWidth="53.0" />
+      <TextField fx:id="annee_expiration" layoutX="467.0" layoutY="206.0" prefHeight="34.0" prefWidth="84.0" />
+      <TextField fx:id="cvc" layoutX="358.0" layoutY="280.0" prefHeight="27.0" prefWidth="111.0" />
+      <Label fx:id="total" layoutX="187.0" layoutY="344.0" prefHeight="27.0" prefWidth="73.0" text="Label" textFill="#eb1111">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="payer_commande" layoutX="459.0" layoutY="372.0" mnemonicParsing="false" onAction="#Payer_commande" prefHeight="25.0" prefWidth="141.0" text="Payer Commade" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dddba8" height="76.0" layoutX="161.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="342.0" />
+      <Text fontSmoothingType="LCD" layoutX="179.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Page de paiement" wrappingWidth="371.857421875">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="28.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="53.0" fitWidth="75.0" layoutX="434.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/payment.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="26.0" layoutY="142.0" prefHeight="18.0" prefWidth="236.0" text="N° de la carte :">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="214.0" prefHeight="18.0" prefWidth="236.0" text="Mois d'expiration :">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="294.0" layoutY="213.0" prefHeight="18.0" prefWidth="236.0" text="Année d'expiration :">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="284.0" prefHeight="18.0" prefWidth="320.0" text="Numéro de vérification de Carte (CVC):">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="345.0" prefHeight="23.0" prefWidth="153.0" text="Total à Payer : " textFill="#228cc9">
+         <font>
+            <Font name="Verdana Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

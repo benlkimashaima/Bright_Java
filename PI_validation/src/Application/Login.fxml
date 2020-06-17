@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="loginwindow" prefHeight="528.0" prefWidth="729.0" style="-fx-background-color: #E6E4BE;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.LoginController">
+    <stylesheets>
+        <URL value="@login.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="528.0" fitWidth="294.0" pickOnBounds="true">
+         <image>
+            <Image url="@img/refuge.jpg" />
+         </image>
+      </ImageView>
+      <Text layoutX="338.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue chez BRIGHT">
+         <font>
+            <Font name="Eras Medium ITC" size="26.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="62.0" fitWidth="46.0" layoutX="630.0" layoutY="36.0" pickOnBounds="true">
+         <image>
+            <Image url="@img/bright.png" />
+         </image>
+      </ImageView>
+      <Text fill="#6b6b6b" layoutX="339.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez vous connecter !">
+         <font>
+            <Font name="Eras Medium ITC" size="18.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="102.0" fitWidth="99.0" layoutX="464.0" layoutY="139.0" pickOnBounds="true">
+         <image>
+            <Image url="@img/login-icon.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="339.0" layoutY="291.0" text="Nom d'utilisateur :">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="339.0" layoutY="357.0" text="Mot de passe :">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtpseudo" layoutX="338.0" layoutY="314.0" prefHeight="25.0" prefWidth="346.0">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </TextField>
+      <Text fx:id="txtpwdoublie" fill="#5b4141" fontSmoothingType="LCD" layoutX="339.0" layoutY="420.0" onMouseClicked="#mouseMdpoublie" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe oublié ?">
+         <font>
+            <Font name="Gadugi Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Text>
+      <PasswordField fx:id="txtpassword" layoutX="338.0" layoutY="378.0" prefHeight="25.0" prefWidth="346.0">
+         <font>
+            <Font name="Verdana" size="14.0" />
+         </font>
+      </PasswordField>
+      <Button fx:id="btnconnexion" layoutX="590.0" layoutY="453.0" mnemonicParsing="false" onMouseClicked="#loginConnexion" text="Connexion">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="467.0" layoutY="453.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="94.0" text="S'inscrire">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btneffacer" layoutX="338.0" layoutY="453.0" mnemonicParsing="false" onMouseClicked="#effacer" prefHeight="28.0" prefWidth="94.0" text="Effacer">
+         <font>
+            <Font name="Verdana Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
