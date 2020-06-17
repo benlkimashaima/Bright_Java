@@ -45,27 +45,29 @@ public class StockController implements Initializable {
   
     public ObservableList<stock> tables = FXCollections.observableArrayList();
     private stock ev=null;
-        stock s =new stock();
+    stock s =new stock();
 
 @FXML
     private TextField search;
 
 
  @FXML
-    private void SelectItemes(MouseEvent event)throws SQLException {
+    private void SelectItemes(MouseEvent event)throws SQLException{
          ObservableList<stock> oblist;
         oblist = table.getSelectionModel().getSelectedItems();
         if (oblist != null) {
             type.setText(oblist.get(0).getType());
 
-          
-                        int max = oblist.get(0).getId();
-
         }
     }
 
-     @FXML
-    private void ajouter(ActionEvent event) {
+    
+    
+
+     
+    
+@FXML
+private void ajouter(ActionEvent event) {
          ltype.setText("");
          if(type.getText().isEmpty()){
          ltype.setText("Champs Vide * ");
@@ -83,8 +85,8 @@ public class StockController implements Initializable {
     }
     
     
-     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+@Override
+public void initialize(URL url, ResourceBundle rb) {
       
     } 
  
@@ -92,11 +94,11 @@ public class StockController implements Initializable {
     
     
     
-    @FXML
-    private void modifier(ActionEvent event)throws SQLException {
+@FXML
+private void modifier(ActionEvent event)throws SQLException {
         lb.setText("");
         if(type.getText().isEmpty()){
-      lb.setText("aucun STOCK n'est sélectionné  ");
+      lb.setText("Champs Vide * ");
         }else {
         stock s = new stock();
         s.setType(type.getText());
@@ -118,8 +120,8 @@ public class StockController implements Initializable {
     
     
 
-    @FXML
-    private void supp(ActionEvent event) {
+@FXML
+private void supp(ActionEvent event) {
     
 
                 ObservableList<stock> oblist;
@@ -141,8 +143,8 @@ public class StockController implements Initializable {
     
     
     
-    @FXML
-    private void afficher(ActionEvent event) {
+@FXML
+private void afficher(ActionEvent event) {
         col_type.setCellValueFactory(new PropertyValueFactory<>("type"));
         try {
             stock_crud sc = new stock_crud();
@@ -155,12 +157,12 @@ public class StockController implements Initializable {
     
     
     
- @FXML
-    private void rechercheStock(KeyEvent event) {
+@FXML
+private void rechercheStock(KeyEvent event) {
         table.setItems((ObservableList<stock>) tables);
         FilteredList<stock> filteredData = new FilteredList<>(tables, b -> true);
         search.textProperty().addListener((observable, oldValue, newValue) -> {
-         filteredData.setPredicate(A -> {
+        filteredData.setPredicate(A -> {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
@@ -181,7 +183,7 @@ public class StockController implements Initializable {
     
     
      
-    public void vider (){
+public void vider (){
         type.clear();
     }
    

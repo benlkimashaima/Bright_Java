@@ -65,27 +65,7 @@ public class stock_crud {
      }
      
      
-     
-    public ObservableList<stock> displayALLStock() {
-        ObservableList<stock> myList = FXCollections.observableArrayList();
-        try {
-            String req = "SELECT * FROM stock";
-            Statement pst = cn2.createStatement();
-            ResultSet rs = pst.executeQuery(req);
-            while (rs.next()) {
-                stock s = new stock();
-                s.setId(rs.getInt("id"));
-                s.setType(rs.getString("type"));
-                myList.add(s);
-            }
-
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-
-        }
-        return myList;
-    }
-    
+ 
     
     
     public void ajouter(stock a) {
@@ -103,7 +83,7 @@ public class stock_crud {
     
     
     
-    public ObservableList<stock> afficher(stock A) throws SQLException {
+    public ObservableList<stock> afficher(stock A) throws SQLException  {
         ObservableList<stock> s = FXCollections.observableArrayList();
         st = cn2.createStatement();
         ResultSet rs = st.executeQuery("select * from stock");
@@ -136,29 +116,12 @@ public class stock_crud {
     public void supprimer(int id) throws SQLException {
         st = cn2.createStatement();
         String q = "delete from stock where id= " + id;
-        PreparedStatement pre = cn2.prepareStatement(q);
         st.executeUpdate(q);
         System.out.println("tu as bien supprimé");
     }
     
     
-    
-    public ObservableList<stock> rechercheStock(String recherche) throws SQLException {
-        stock s = new stock();
-        ObservableList<stock> list = FXCollections.observableArrayList();
-        String requete = "select type from stock   WHERE type LIKE '%"+recherche+"%'    ";
-        try {
-            PreparedStatement ps = cn2.prepareStatement(requete);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-            s.setType(rs.getString("type"));
-            list.add(s);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return list;
-    }
+
 
          
 }

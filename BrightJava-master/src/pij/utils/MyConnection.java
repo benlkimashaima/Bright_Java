@@ -18,7 +18,7 @@ public class MyConnection {
     /**
      *
      */
-    public static String url = "jdbc:mysql://localhost/refugees";
+    public static String url = "jdbc:mysql://localhost:3306/refugees";
     public static String login = "root";
     public static String pwd = "";
     public static MyConnection instance;

@@ -5,8 +5,10 @@
  */
 package pij.controller;
 
+import com.sun.mail.util.logging.MailHandler;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,10 +28,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javax.mail.Session;
+import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Authenticator;
 import java.util.Properties;
+import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.*;
 import javax.mail.internet.AddressException;
 
 import pij.entity.Users;
@@ -46,8 +54,8 @@ public class AssociationController implements Initializable {
     Connection con = connectionDB.getInstance().getCnx();
     crud_association c = new crud_association();
     List<Users> listA = new ArrayList<>();
-    private final PreparedStatement pst = null;
-    private final ResultSet rs = null;
+    private PreparedStatement pst = null;
+    private ResultSet rs = null;
     @FXML
     private TableView<Users> table;
     @FXML
@@ -77,8 +85,6 @@ public class AssociationController implements Initializable {
         String msg;
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
      */
         
     @Override
@@ -135,17 +141,18 @@ public class AssociationController implements Initializable {
  
         // outgoing message information
         String mailTo = "ahmedouertani00@gmail.com";
-        String subject1 = "Hello my friend";
+        String subject = "Hello my friend";
         String message = "Hi guy, Hope you are doing well. Duke.";
  
         PlainTextEmailSender mailer = new PlainTextEmailSender();
  
         try {
             mailer.sendPlainTextEmail(host, port, mailFrom, password, mailTo,
-                    subject1, message);
+                    subject, message);
             System.out.println("Email sent.");
-        } catch (MessagingException ex) {
+        } catch (Exception ex) {
             System.out.println("Failed to sent email.");
+            ex.printStackTrace();
         }
     }
 
@@ -168,7 +175,6 @@ public class AssociationController implements Initializable {
  
         // creates a new session with an authenticator
         Authenticator auth = new Authenticator() {
-            @Override
             public PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(userName, password);
             }

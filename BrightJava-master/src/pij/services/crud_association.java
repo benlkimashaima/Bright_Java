@@ -24,6 +24,7 @@ import pij.utils.connectionDB;
  * @author AHMED
  */
 public class crud_association {
+    
 
     Connection con = connectionDB.getInstance().getCnx();
 

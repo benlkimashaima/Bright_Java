@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import pij.utils.MyConnection;
 
 /**
  * FXML Controller class
@@ -75,20 +76,22 @@ public class DashboardController implements Initializable {
             } catch (IOException ex) {
                 Logger.getLogger(DashboardController.class.getName()).log(Level.SEVERE, null, ex);
             }
-           
+          
         
     }
 
 
 @FXML
-    private void deconnexion(ActionEvent event) throws IOException {
-         Stage stage =new Stage();
-                 Parent root = FXMLLoader.load(getClass().getResource("views/Login1.fxml"));
-                 Scene scene = new Scene(root);
-                 stage.setScene(scene);
-               
-                stage.setTitle("Home");
-                stage.show();
+    private void deconnexion(ActionEvent event) throws IOException  {
+     
+        
+          Node node = (Node) event.getSource();
+                    Stage stage = (Stage) node.getScene().getWindow();
+                    stage.setMaximized(true);
+                    stage.close();
+                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("views/Login1.fxml")));
+                    stage.setScene(scene);
+                    stage.show();
     }
     @FXML
     private void handleButtonAction(MouseEvent event) {

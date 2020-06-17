@@ -13,6 +13,7 @@ package pij.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +73,7 @@ public class SpecialiteController implements Initializable {
         
         listD =d.afficherSpecialite();
         ObservableList <Specialite> listDem=FXCollections.observableArrayList(listD);
-        colspecialite.setCellValueFactory(new PropertyValueFactory<>("") );
+        colspecialite.setCellValueFactory(new PropertyValueFactory<>("nomSpecialite") );
  
         tablespecialite.setItems(listDem);
         

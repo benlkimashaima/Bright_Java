@@ -37,6 +37,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
@@ -47,6 +48,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import pij.entity.don;
 import pij.entity.stock;
 import pij.services.don_crud;
@@ -90,10 +93,11 @@ public class DonController implements Initializable {
     public ObservableList<don> tables = FXCollections.observableArrayList();
     private don ev=null;
     stock s =new stock();
-              //List<String> type;
 
     @FXML 
     private TextField search;
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Connection cn2= MyConnection.getInstance().getCnx();
@@ -122,11 +126,12 @@ public class DonController implements Initializable {
     private void convertirEnPdf(ActionEvent event) throws FileNotFoundException, DocumentException {
     String file="E:\\don.pdf";
     Document document =new Document();
-    Alert a2 = new Alert(Alert.AlertType.CONFIRMATION);
-    a2.setTitle("Conversion PDF !");
-    a2.setContentText("PDF telecharge avec succés!");
-    a2.show();
-
+  Notifications notificationBuilder = Notifications.create()
+    .title("Download completed")
+    .text("saved In E:\\ ")
+    .hideAfter(Duration.seconds(4))
+    .position(Pos.BOTTOM_CENTER);
+    notificationBuilder.showInformation();
      try{
            Font f = new Font(FontFactory.getFont(FontFactory.TIMES_BOLD, 24, Font.UNDERLINE));
            f.setColor(0, 153, 255);
@@ -135,10 +140,10 @@ public class DonController implements Initializable {
            PdfWriter.getInstance(document, new FileOutputStream(new File(file)));
            document.open();
            Paragraph p =new Paragraph("LISTE  DES  DON  " ,f);
+           p.setAlignment(Element.ALIGN_CENTER);
            document.add(Image.getInstance("E:\\don.png"));
            Paragraph pm =new Paragraph();
            pm.add("   \n  ");
-           p.setAlignment(Element.ALIGN_CENTER);
            document.add(p);
            document.add(pm);
            document.add(pm);
@@ -180,7 +185,7 @@ public class DonController implements Initializable {
           labelnom.setText("Libelle Vide");
         }
          if (tquantite.getText().isEmpty()) {
-          labesquanite.setText("Qantité Vide");
+          labesquanite.setText("Quantité Vide");
         }
          if (dated.getValue() == null) {
         labeldate.setText("Date Vide");
@@ -189,10 +194,10 @@ public class DonController implements Initializable {
            labelstock.setText("Stock Vide");
         } 
         }else { 
-        int nb_place= Integer.parseInt(tquantite.getText());
-        if(nb_place<0 || dated.getValue().toString().compareTo(aujourdhui)>0   ){
+        int quantite= Integer.parseInt(tquantite.getText());
+        if(quantite<0 || dated.getValue().toString().compareTo(aujourdhui)>0   ){
              
-            if (nb_place<0) {
+            if (quantite<0) {
             labesquanite.setText("quantite doit etre > 0 ");}
             if (dated.getValue().toString().compareTo(aujourdhui)>0) {
             labeldate.setText("Date doit etre < a celle d'aujourdhui  ");}
@@ -200,12 +205,11 @@ public class DonController implements Initializable {
         String a = tlibelle.getText();
         LocalDate d= (LocalDate)dated.getValue();
         java.sql.Date sqlDate1 = java.sql.Date.valueOf(d);
-        don_crud sp = new don_crud();
         stock_crud stocks = new stock_crud();
         stock s=new stock();
         s=stocks.getStock(Cstock.getValue());
         don_crud ac = new don_crud();
-        don dd = new don(a,nb_place,sqlDate1,s.getId());
+        don dd = new don(a,quantite,sqlDate1,s.getId());
         ac.ajouter(dd); 
         Alert alert =new Alert(AlertType.INFORMATION);
         alert.setTitle("Add Don!");
@@ -223,7 +227,6 @@ public class DonController implements Initializable {
         oblist = table.getSelectionModel().getSelectedItems();
         ev = (don)table.getSelectionModel().getSelectedItem();
         stock_crud stocks = new stock_crud();
-        stock b=new stock();
         if (oblist != null) {
             tlibelle.setText(oblist.get(0).getLibelle());
             tquantite.setText(""+oblist.get(0).getQuantite());
@@ -233,7 +236,6 @@ public class DonController implements Initializable {
                 } catch (SQLException ex) {
                   Logger.getLogger(DonController.class.getName()).log(Level.SEVERE, null, ex);
                 }                        
-            int max = oblist.get(0).getReference();
 
         }
         ObservableList<String> availableChoices = FXCollections.observableArrayList("Selectionner stock");
@@ -257,8 +259,8 @@ public class DonController implements Initializable {
     
     @FXML
     private void modifier(ActionEvent event) throws SQLException {
-         labelu.setText("");
-         System.out.println("date d'aujourdhui"+new java.util.Date());
+     labelu.setText("");
+     System.out.println("date d'aujourdhui"+new java.util.Date());
      SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
      System.out.println(formater.format(new java.util.Date()));
      String aujourdhui=formater.format(new java.util.Date());
@@ -267,7 +269,7 @@ public class DonController implements Initializable {
           labelnom.setText("Libelle Vide");
         }
          if (tquantite.getText().isEmpty()) {
-          labesquanite.setText("Qantité Vide");
+          labesquanite.setText("Quantité Vide");
         }
          if (dated.getValue() == null) {
         labeldate.setText("Date Vide");
@@ -276,10 +278,10 @@ public class DonController implements Initializable {
            labelstock.setText("Stock Vide");
         } 
         }else { 
-        int nb_place= Integer.parseInt(tquantite.getText());
-        if(nb_place<0 || dated.getValue().toString().compareTo(aujourdhui)>0   ){
+        int quantite= Integer.parseInt(tquantite.getText());
+        if(quantite<0 || dated.getValue().toString().compareTo(aujourdhui)>0   ){
              
-            if (nb_place<0) {
+            if (quantite<0) {
             labesquanite.setText("quantite doit etre > 0 ");}
             if (dated.getValue().toString().compareTo(aujourdhui)>0) {
             labeldate.setText("Date doit etre < a celle d'aujourdhui  ");}
